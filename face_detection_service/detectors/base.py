@@ -13,13 +13,13 @@ class FaceDetection:
     Attributes:
         bbox: Bounding box as (x, y, width, height).
         confidence: Detection confidence score in [0, 1].
-        landmarks: Optional list of (x, y) landmark coordinates.
+        landmarks: Optional dict of landmark name to (x, y) coordinates.
         metadata: Optional extra info from the detector.
     """
 
     bbox: tuple[int, int, int, int]
     confidence: float
-    landmarks: list[tuple[int, int]] | None = None
+    landmarks: dict[str, tuple[int, int]] = field(default_factory=dict)
     metadata: dict[str, object] = field(default_factory=dict)
 
 

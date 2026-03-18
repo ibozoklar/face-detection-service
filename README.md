@@ -104,23 +104,23 @@ curl http://localhost:8000/detectors
 {
   "detections": [
     {
-      "bbox": [120, 80, 180, 200],
-      "confidence": 0.95,
-      "landmarks": [
-        [155, 130],
-        [245, 132],
-        [200, 175],
-        [200, 210],
-        [115, 155],
-        [280, 158]
-      ],
+      "bbox": [244, 282, 680, 680],
+      "confidence": 0.9568,
+      "landmarks": {
+        "right_eye": [386, 495],
+        "left_eye": [662, 496],
+        "nose_tip": [476, 683],
+        "mouth_center": [502, 802],
+        "right_ear_tragion": [319, 533],
+        "left_ear_tragion": [882, 530]
+      },
       "metadata": {}
     }
   ],
   "num_faces": 1,
   "detector_used": "mediapipe",
-  "processing_time_ms": 12.34,
-  "image_metadata": {"width": 640, "height": 480, "channels": 3, "format": null},
+  "processing_time_ms": 14.89,
+  "image_metadata": {"width": 1024, "height": 1024, "channels": 3, "format": null},
   "annotated_image_base64": null
 }
 ```

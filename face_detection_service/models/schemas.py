@@ -25,7 +25,7 @@ class FaceDetectionSchema(BaseModel):
 
     bbox: tuple[int, int, int, int] = Field(..., description="Bounding box as (x, y, width, height).")
     confidence: float = Field(..., ge=0.0, le=1.0)
-    landmarks: list[list[int]] | None = Field(default=None, description="List of [x, y] landmark coordinates.")
+    landmarks: dict[str, tuple[int, int]] = Field(default_factory=dict, description="Landmark name to (x, y) coordinates.")
     metadata: dict[str, object] = Field(default_factory=dict)
 
 

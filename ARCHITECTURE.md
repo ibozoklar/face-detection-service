@@ -16,7 +16,7 @@ Three detectors were chosen to represent a spectrum from classical computer visi
 
 **Haar Cascade (OpenCV)** — The classical baseline. Uses Viola-Jones detection with pre-trained cascade classifiers. Chosen because it ships with OpenCV (zero additional dependencies), runs on CPU with minimal overhead, and provides a useful reference point for benchmarking. Limitations: high false positive rate, sensitive to rotation and occlusion.
 
-**Dlib HOG** — A mid-tier detector using Histogram of Oriented Gradients features with a linear SVM classifier. Selected because it demonstrates feature engineering fundamentals (gradient computation, cell histograms, block normalization) rather than end-to-end learning. It strikes a balance between speed and accuracy. Dlib also offers a CNN-based detector as an alternative mode, which can be toggled via configuration.
+**Dlib HOG** — A mid-tier detector using Histogram of Oriented Gradients features with a linear SVM classifier. Selected because it demonstrates feature engineering fundamentals (gradient computation, cell histograms, block normalization) rather than end-to-end learning. It strikes a balance between speed and accuracy. Dlib's CNN-based detector could be integrated as a future enhancement for higher accuracy at the cost of increased inference time.
 
 **MediaPipe Face Detection** — Google's production-grade solution using a lightweight neural network (BlazeFace). Chosen for its speed (sub-millisecond on modern hardware), built-in landmark support (6 keypoints), consistent cross-platform behavior, and native ARM/Apple Silicon support. It represents the modern approach to face detection.
 

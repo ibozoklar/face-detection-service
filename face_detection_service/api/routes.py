@@ -161,7 +161,7 @@ async def _run_detection(
             FaceDetectionSchema(
                 bbox=d.bbox,
                 confidence=d.confidence,
-                landmarks=[list(lm) for lm in d.landmarks] if d.landmarks else None,
+                landmarks=d.landmarks,
                 metadata=d.metadata,
             )
             for d in detections
