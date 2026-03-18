@@ -104,16 +104,16 @@ curl http://localhost:8000/detectors
 {
   "detections": [
     {
-      "bbox": {"x": 120, "y": 80, "width": 180, "height": 200},
+      "bbox": [120, 80, 180, 200],
       "confidence": 0.95,
-      "landmarks": {
-        "right_eye": [155, 130],
-        "left_eye": [245, 132],
-        "nose_tip": [200, 175],
-        "mouth_center": [200, 210],
-        "right_ear_tragion": [115, 155],
-        "left_ear_tragion": [280, 158]
-      },
+      "landmarks": [
+        [155, 130],
+        [245, 132],
+        [200, 175],
+        [200, 210],
+        [115, 155],
+        [280, 158]
+      ],
       "metadata": {}
     }
   ],

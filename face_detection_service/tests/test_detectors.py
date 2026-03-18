@@ -34,11 +34,12 @@ class TestHaarCascadeDetector:
     def test_detection_fields(self, face_image: np.ndarray):
         results = self.detector.detect(face_image)
         for det in results:
-            assert det.width > 0
-            assert det.height > 0
-            assert 0.0 <= det.confidence <= 1.0
             assert isinstance(det.bbox, tuple)
             assert len(det.bbox) == 4
+            x, y, w, h = det.bbox
+            assert w > 0
+            assert h > 0
+            assert 0.0 <= det.confidence <= 1.0
 
     def test_detect_invalid_image(self):
         invalid = np.zeros((0, 0, 3), dtype=np.uint8)
@@ -109,7 +110,9 @@ class TestMediaPipeDetector:
         """MediaPipe should return landmarks when a face is found."""
         results = self.detector.detect(face_image)
         for det in results:
-            assert isinstance(det.landmarks, dict)
+            assert isinstance(det.landmarks, list)
+            for lm in det.landmarks:
+                assert len(lm) == 2
 
 
 # ── Registry ─────────────────────────────────────────────────────────────────

@@ -40,6 +40,10 @@ class TestDetectUpload:
         assert data["processing_time_ms"] >= 0
         assert data["image_metadata"]["width"] == 300
         assert data["image_metadata"]["height"] == 300
+        # Verify bbox is a list of 4 ints (JSON tuple)
+        for det in data["detections"]:
+            assert isinstance(det["bbox"], list)
+            assert len(det["bbox"]) == 4
 
     async def test_upload_invalid_detector(self, async_client, face_image):
         raw = _encode_image_bytes(face_image)

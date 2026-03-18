@@ -50,10 +50,7 @@ class DlibHOGDetector(BaseFaceDetector):
 
             detections.append(
                 FaceDetection(
-                    x=int(x),
-                    y=int(y),
-                    width=int(w),
-                    height=int(h),
+                    bbox=(int(x), int(y), int(w), int(h)),
                     confidence=round(confidence, 4),
                 )
             )

@@ -20,21 +20,12 @@ class DetectionRequest(BaseModel):
 
 # ── Response components ──────────────────────────────────────────────────────
 
-class BoundingBox(BaseModel):
-    """Bounding box coordinates."""
-
-    x: int
-    y: int
-    width: int
-    height: int
-
-
 class FaceDetectionSchema(BaseModel):
     """Single detected face."""
 
-    bbox: BoundingBox
+    bbox: tuple[int, int, int, int] = Field(..., description="Bounding box as (x, y, width, height).")
     confidence: float = Field(..., ge=0.0, le=1.0)
-    landmarks: dict[str, tuple[int, int]] = Field(default_factory=dict)
+    landmarks: list[list[int]] | None = Field(default=None, description="List of [x, y] landmark coordinates.")
     metadata: dict[str, object] = Field(default_factory=dict)
 
 

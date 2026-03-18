@@ -70,18 +70,15 @@ class MediaPipeDetector(BaseFaceDetector):
             bw = min(bw, w - x)
             bh = min(bh, h - y)
 
-            # Extract 6 keypoints
-            landmarks: dict[str, tuple[int, int]] = {}
-            for idx, kp in enumerate(det.location_data.relative_keypoints):
-                kp_name = _KEYPOINT_NAMES.get(idx, f"keypoint_{idx}")
-                landmarks[kp_name] = (int(kp.x * w), int(kp.y * h))
+            # Extract 6 keypoints as list of [x, y] pairs
+            landmarks: list[tuple[int, int]] = [
+                (int(kp.x * w), int(kp.y * h))
+                for kp in det.location_data.relative_keypoints
+            ]
 
             detections.append(
                 FaceDetection(
-                    x=x,
-                    y=y,
-                    width=bw,
-                    height=bh,
+                    bbox=(x, y, bw, bh),
                     confidence=round(det.score[0], 4),
                     landmarks=landmarks,
                 )

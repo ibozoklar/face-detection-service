@@ -19,7 +19,6 @@ from face_detection_service.api.dependencies import (
 )
 from face_detection_service.detectors.registry import DetectorRegistry
 from face_detection_service.models.schemas import (
-    BoundingBox,
     DetectionRequest,
     DetectionResponse,
     DetectorInfo,
@@ -160,9 +159,10 @@ async def _run_detection(
     return DetectionResponse(
         detections=[
             FaceDetectionSchema(
-                bbox=BoundingBox(x=d.x, y=d.y, width=d.width, height=d.height),
+                bbox=d.bbox,
                 confidence=d.confidence,
-                landmarks=d.landmarks,
+                landmarks=[list(lm) for lm in d.landmarks] if d.landmarks else None,
+                metadata=d.metadata,
             )
             for d in detections
         ],
