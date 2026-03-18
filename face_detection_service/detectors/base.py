@@ -19,7 +19,7 @@ class FaceDetection:
 
     bbox: tuple[int, int, int, int]
     confidence: float
-    landmarks: dict[str, tuple[int, int]] = field(default_factory=dict)
+    landmarks: list[tuple[int, int]] = field(default_factory=list)
     metadata: dict[str, object] = field(default_factory=dict)
 
 

@@ -9,16 +9,6 @@ import numpy as np
 from face_detection_service import config
 from face_detection_service.detectors.base import BaseFaceDetector, FaceDetection
 
-# MediaPipe keypoint indices → human-readable names
-_KEYPOINT_NAMES: dict[int, str] = {
-    0: "right_eye",
-    1: "left_eye",
-    2: "nose_tip",
-    3: "mouth_center",
-    4: "right_ear_tragion",
-    5: "left_ear_tragion",
-}
-
 
 class MediaPipeDetector(BaseFaceDetector):
     """Google MediaPipe BlazeFace detector.
@@ -70,11 +60,8 @@ class MediaPipeDetector(BaseFaceDetector):
             bw = min(bw, w - x)
             bh = min(bh, h - y)
 
-            # Extract 6 keypoints as named landmarks
-            landmarks: dict[str, tuple[int, int]] = {}
-            for idx, kp in enumerate(det.location_data.relative_keypoints):
-                kp_name = _KEYPOINT_NAMES.get(idx, f"keypoint_{idx}")
-                landmarks[kp_name] = (int(kp.x * w), int(kp.y * h))
+            # Extract 6 keypoints as landmark coordinate pairs
+            landmarks = [(int(kp.x * w), int(kp.y * h)) for kp in det.location_data.relative_keypoints]
 
             detections.append(
                 FaceDetection(

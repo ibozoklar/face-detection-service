@@ -119,7 +119,7 @@ def annotate_image(
             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1,
         )
 
-        for lm_name, (lx, ly) in det.landmarks.items():
+        for (lx, ly) in det.landmarks:
             cv2.circle(annotated, (lx, ly), 3, (0, 0, 255), -1)
 
     return annotated

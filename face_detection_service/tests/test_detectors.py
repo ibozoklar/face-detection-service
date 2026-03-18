@@ -110,7 +110,7 @@ class TestMediaPipeDetector:
         """MediaPipe should return landmarks when a face is found."""
         results = self.detector.detect(face_image)
         for det in results:
-            assert isinstance(det.landmarks, dict)
+            assert isinstance(det.landmarks, list)
 
 
 # ── Registry ─────────────────────────────────────────────────────────────────
