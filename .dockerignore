@@ -1,0 +1,12 @@
+venv/
+.venv/
+.git/
+__pycache__/
+*.pyc
+face_detection_service/logs/
+*.db
+.env
+.env.local
+.pytest_cache/
+htmlcov/
+.coverage

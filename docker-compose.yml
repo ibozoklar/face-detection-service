@@ -1,0 +1,13 @@
+services:
+  face-detection:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./face_detection_service/logs:/app/face_detection_service/logs
+    environment:
+      - LOG_LEVEL=INFO
+      - WORKERS=1
+      - THREAD_POOL_MAX_WORKERS=4
+      - MEDIAPIPE_MIN_DETECTION_CONFIDENCE=0.5
+    restart: unless-stopped

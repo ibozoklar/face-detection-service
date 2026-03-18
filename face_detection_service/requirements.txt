@@ -1,0 +1,33 @@
+# Web framework
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+
+# Image processing
+opencv-python-headless==4.10.0.84
+numpy>=1.24.0,<2.0.0
+
+# Face detection
+dlib==19.24.6
+mediapipe>=0.10.14
+
+# Data validation
+pydantic==2.10.4
+
+# HTTP client (async test support)
+httpx==0.28.1
+
+# Testing
+pytest==8.3.4
+pytest-asyncio==0.25.0
+
+# Logging
+python-json-logger==3.2.1
+
+# Benchmark (optional)
+tabulate==0.9.0
+
+# Platform notes:
+# - dlib requires cmake: brew install cmake (macOS) / apt-get install cmake (Linux)
+# - On Windows, dlib requires Visual Studio Build Tools with C++ workload
+# - mediapipe supports Apple Silicon natively
